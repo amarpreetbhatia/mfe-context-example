@@ -1,4 +1,6 @@
 import React from "react";
+//@ts-ignore
+import { useStore } from "store/store";
 
 export interface HeaderProps {
   title: string;
@@ -6,7 +8,9 @@ export interface HeaderProps {
   onClear: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ title, count, onClear }) => {
+const Header: React.FC<HeaderProps> = ({ title }) => {
+  //@ts-ignore
+  const { count, clear } = useStore();
   return (
     <header
       style={{
@@ -19,7 +23,7 @@ const Header: React.FC<HeaderProps> = ({ title, count, onClear }) => {
     >
       <div>{title}</div>
       <div>{count}</div>
-      <button onClick={onClear}>Clear</button>
+      <button onClick={clear}>Clear</button>
     </header>
   );
 };
