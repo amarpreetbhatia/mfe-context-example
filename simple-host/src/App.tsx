@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 // @ts-ignore
 import Header from "nav_mf/Header";
 import "./index.css";
+// @ts-ignore
+import { CountProvider, useCount } from "simple_host/store";
 
 const App = () => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useCount();
   return (
     <div className="container">
       <Header
@@ -40,4 +42,8 @@ if (!rootElement) throw new Error("Failed to find the root element");
 
 const root = ReactDOM.createRoot(rootElement as HTMLElement);
 
-root.render(<App />);
+root.render(
+  <CountProvider>
+    <App />
+  </CountProvider>
+);
