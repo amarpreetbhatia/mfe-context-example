@@ -4,17 +4,13 @@ import ReactDOM from "react-dom/client";
 import Header from "nav_mf/Header";
 import "./index.css";
 // @ts-ignore
-import { CountProvider, useCount } from "simple_host/store";
+import { StoreProvider, useStore } from "store/store";
 
 const App = () => {
-  const [count, setCount] = useCount();
+  const { count, increment, clear } = useStore();
   return (
     <div className="container">
-      <Header
-        title="Header in host"
-        count={count}
-        onClear={() => setCount(0)}
-      />
+      <Header title="Header in host" count={count} onClear={clear} />
       <div>Name: simple-host</div>
       <div>Framework: react</div>
       <div>Language: TypeScript</div>
@@ -28,7 +24,7 @@ const App = () => {
             fontWeight: "bold",
             fontSize: "24px",
           }}
-          onClick={() => setCount(count + 1)}
+          onClick={increment}
         >
           Count: {count}
         </button>
@@ -43,7 +39,7 @@ if (!rootElement) throw new Error("Failed to find the root element");
 const root = ReactDOM.createRoot(rootElement as HTMLElement);
 
 root.render(
-  <CountProvider>
+  <StoreProvider>
     <App />
-  </CountProvider>
+  </StoreProvider>
 );

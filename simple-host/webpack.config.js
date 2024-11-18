@@ -66,7 +66,7 @@ module.exports = (_, argv) => ({
       filename: "remoteEntry.js",
       remotes: {
         nav_mf: "nav_mf@http://localhost:3001/remoteEntry.js",
-        simple_host: "simple_host@http://localhost:3000/remoteEntry.js",
+        store: "store@http://localhost:3002/remoteEntry.js",
       },
       exposes: {
         "./store": "./src/store",
