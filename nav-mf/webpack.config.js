@@ -64,7 +64,9 @@ module.exports = (_, argv) => ({
     new ModuleFederationPlugin({
       name: "nav_mf",
       filename: "remoteEntry.js",
-      remotes: {},
+      remotes: {
+        simple_host: "simple_host@http://localhost:3000/remoteEntry.js",
+      },
       exposes: {
         "./Header": "./src/Header.tsx",
       },

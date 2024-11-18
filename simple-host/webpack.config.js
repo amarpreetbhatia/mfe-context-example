@@ -66,8 +66,11 @@ module.exports = (_, argv) => ({
       filename: "remoteEntry.js",
       remotes: {
         nav_mf: "nav_mf@http://localhost:3001/remoteEntry.js",
+        simple_host: "simple_host@http://localhost:3000/remoteEntry.js",
       },
-      exposes: {},
+      exposes: {
+        "./store": "./src/store",
+      },
       shared: {
         ...deps,
         react: {
